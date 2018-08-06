@@ -12,4 +12,11 @@
 */
 
 Route::get('/', 'PageController@index');
+Route::resource('/api/posts/', 'PostController');
+
+Auth::routes();
+
+Route::group(['middleware' => 'auth'], function (){
+    Route::get('/home', 'HomeController@index')->name('home');
+});
 
