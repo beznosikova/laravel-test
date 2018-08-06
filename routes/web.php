@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', 'PageController@index');
-Route::get('/{category}', 'PageController@category');
-Route::get('/{category}/{post}', 'PageController@post');
-
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function (){
@@ -23,4 +19,6 @@ Route::group(['middleware' => 'auth'], function (){
     Route::resource('categories', 'CategoriesController');
 });
 
-
+Route::get('/', 'PageController@index');
+Route::get('/{category}', 'PageController@category')->name('category');
+Route::get('/{category}/{post}', 'PageController@post')->name('post');
