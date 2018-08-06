@@ -1,16 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            {{--<div> title error:{{ $errors->first('title') }}</div>--}}
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('admin.errors')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">

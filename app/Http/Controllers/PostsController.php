@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        dump(['a'=>333, 'b'=>444]);
-        //
+        $posts = Post::all();
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -25,8 +26,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        dump(['a'=>'create', 'b'=>'create']);
-        //
+        $categories = Category::all();
+        return view('admin.posts.form', compact('categories'));
     }
 
     /**
@@ -37,7 +38,16 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'slug' => 'required',
+            'body' => 'required',
+            'category_id' => 'required|integer',
+        ]);
+
+        Post::create($request->all());
+
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -59,7 +69,9 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $entity = $post;
+        $categories = Category::all();
+        return view('admin.posts.form', compact('entity', 'categories'));
     }
 
     /**
@@ -71,7 +83,16 @@ class PostsController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'slug' => 'required',
+            'body' => 'required',
+            'category_id' => 'required|integer',
+        ]);
+
+        $post->update($request->all());
+
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -82,6 +103,7 @@ class PostsController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts.index');
     }
 }

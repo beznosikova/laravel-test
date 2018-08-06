@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'PageController@index');
+Route::get('/{category}', 'PageController@category');
+Route::get('/{category}/{post}', 'PageController@post');
 
 Auth::routes();
 
