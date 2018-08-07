@@ -20,14 +20,16 @@ class PageController extends Controller
         return view('face.category', compact('category', 'posts'));
     }
 
-    public function post($categorySlug, $postSlug)
+    public function post(Category $category, Post $post)
     {
-        $category = Category::where('slug', $categorySlug)->first();
-        $post = Post::where('slug', $postSlug)->first();
+//        $category = Category::where('slug', $categorySlug)->first();
+//        $post = Post::where('slug', $postSlug)->first();
 
-        if ($category->exists()
-            && $post->exists()
-            && $category->id == $post->category_id ){
+        if (
+//            $category->exists()
+//            && $post->exists()
+//            &&
+        $category->id == $post->category_id ){
             return view('face.post', compact('post'));
         }
 
