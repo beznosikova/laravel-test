@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Library\Services\Contracts\CustomServiceInterface;
 use App\Post;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    public function test(Request $request, Post $post, CustomServiceInterface $custom)
+    {
+        dd($custom->doSomethingUseful());
+
+        return response()->view('home',[],200);
+    }
+
     public function index()
     {
         $categories = Category::all();

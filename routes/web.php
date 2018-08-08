@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth'], function (){
 });
 
 Route::get('/', 'PageController@index');
+Route::get('/test/{post}', 'PageController@test');
 Route::get('/{category}', 'PageController@category')
     ->name('category')
     ->where('category', '[a-z0-9]+')
