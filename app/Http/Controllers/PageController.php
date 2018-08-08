@@ -11,9 +11,9 @@ class PageController extends Controller
 {
     public function test(Request $request, Post $post, CustomServiceInterface $custom)
     {
-        dd($custom->doSomethingUseful());
-
-        return response()->view('home',[],200);
+        $const = $custom::TEST;
+        $text = $custom->doSomethingUseful();
+        return response()->view('test',compact('const', 'text'),200);
     }
 
     public function index()

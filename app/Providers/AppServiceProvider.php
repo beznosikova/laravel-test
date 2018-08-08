@@ -13,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->share('share', '!!SHARE!!');
+        view()->composer('test*', function ($view){
+            $view->with('age', random_int(20,29));
+        });
     }
 
     /**
