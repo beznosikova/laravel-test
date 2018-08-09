@@ -15,12 +15,17 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function (){
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::resource('posts', 'PostsController');
-    Route::resource('categories', 'CategoriesController');
+    Route::group(['middleware' => 'roles:admin'], function () {
+        Route::resource('posts', 'PostsController');
+        Route::resource('categories', 'CategoriesController');
+    });
 });
 
 Route::get('/', 'PageController@index');
-Route::get('/test/{post}', 'PageController@test');
+//Route::get('/test/{post}', 'PageController@test');
+
+//Route::get('/adm', 'PageController@adm')->name('adm');
+
 Route::get('/{category}', 'PageController@category')
     ->name('category')
     ->where('category', '[a-z0-9]+')

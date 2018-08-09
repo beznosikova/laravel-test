@@ -24,7 +24,7 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $categories = Category::all();
         return view('admin.posts.form', compact('categories'));

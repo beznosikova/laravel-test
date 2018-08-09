@@ -6,9 +6,16 @@ use App\Category;
 use App\Library\Services\Contracts\CustomServiceInterface;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
+    public function adm()
+    {
+        Auth::loginUsingId(2);
+        return redirect()->route('home');
+    }
+
     public function test(Request $request, Post $post, CustomServiceInterface $custom)
     {
         $const = $custom::TEST;
