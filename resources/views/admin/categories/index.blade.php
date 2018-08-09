@@ -16,10 +16,10 @@
                                     <span>slug:{{ $category->slug }}, </span>
                                     <span>posts: {{ $category->posts->count() }}</span>
                                     <span>
-                                        <form action="{{ route('categories.destroy', $category->id) }}" method="post">
+                                        <form action="{{ route('categories.destroy', $category->slug) }}" method="post">
                                             {{ method_field(('DELETE')) }}
                                             {{ csrf_field() }}
-                                            <a type="button" class="btn btn-primary" href="{{ route('categories.edit', $category->id) }}">Edit</a>
+                                            <a type="button" class="btn btn-primary" href="{{ route('categories.edit', $category->slug) }}">Edit</a>
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
                                     </span>

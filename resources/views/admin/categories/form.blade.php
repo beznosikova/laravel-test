@@ -16,7 +16,7 @@
                     <div class="panel-body">
                         <form
                                 class="form-horizontal"
-                                action="@if (empty($entity)){{ route('categories.store') }} @else {{ route('categories.update', $entity->id) }}@endif"
+                                action="@if (empty($entity)){{ route('categories.store') }} @else {{ route('categories.update', $entity->slug) }}@endif"
                                 method="post"
                         >
                             {{ csrf_field() }}

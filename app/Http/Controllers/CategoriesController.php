@@ -8,6 +8,11 @@ use Illuminate\Validation\Validator;
 
 class CategoriesController extends Controller
 {
+    private $validateParams = [
+        'title' => 'required',
+        'slug' => 'required',
+        'body' => 'required'
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -37,11 +42,7 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'slug' => 'required',
-            'body' => 'required'
-        ]);
+        $this->validate($request, $this->validateParams);
 
         Category::create($request->all());
 
@@ -80,12 +81,7 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'slug' => 'required',
-            'body' => 'required'
-        ]);
-
+        $this->validate($request, $this->validateParams);
         $category->update($request->all());
 
         return redirect()->route('categories.index');

@@ -15,10 +15,10 @@
                                     <span>{{ $post->title }}, </span>
                                     <span>slug:{{ $post->slug }}, </span>
                                     <span>
-                                        <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+                                        <form action="{{ route('posts.destroy', $post->slug) }}" method="post">
                                             {{ method_field(('DELETE')) }}
                                             {{ csrf_field() }}
-                                            <a type="button" class="btn btn-primary" href="{{ route('posts.edit', $post->id) }}">Edit</a>
+                                            <a type="button" class="btn btn-primary" href="{{ route('posts.edit', $post->slug) }}">Edit</a>
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
                                     </span>

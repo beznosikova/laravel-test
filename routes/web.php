@@ -22,7 +22,7 @@ Route::group(['middleware' => 'auth'], function (){
 });
 
 Route::get('/', 'PageController@index');
-//Route::get('/test/{post}', 'PageController@test');
+Route::get('/test/{post}', 'PageController@test');
 
 //Route::get('/adm', 'PageController@adm')->name('adm');
 
