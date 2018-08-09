@@ -13,9 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
-            'App\Listeners\EventListener',
-        ],
+        // php artisan event:generate
+        'App\Events\UserLoggedIn' => ['App\Listeners\WriteMessageToFile'],
     ];
 
     /**

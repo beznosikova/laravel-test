@@ -19,6 +19,7 @@ Route::group(['middleware' => 'auth'], function (){
         Route::resource('posts', 'PostsController');
         Route::resource('categories', 'CategoriesController');
     });
+    Route::get('/event', 'TestController@event');
 });
 
 Route::get('/', 'PageController@index');
