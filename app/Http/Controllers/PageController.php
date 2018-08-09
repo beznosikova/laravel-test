@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Library\Services\Contracts\CustomServiceInterface;
+use App\Library\Exceptions\CustomException;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +33,10 @@ class PageController extends Controller
     public function category($categorySlug)
     {
         $category = Category::where('slug', $categorySlug)->first();
+        if (!$category)
+            throw new CustomException('Category is not found');
         $posts = $category->posts()->get();
+
         return view('face.category', compact('category', 'posts'));
     }
 
