@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function (){
 Route::get('/', 'PageController@index');
 Route::get('/test/{post}', 'PageController@test');
 Route::get('/test', 'TestController@index');
+Route::get('/files', 'TestController@files');
 
 //Route::get('/adm', 'PageController@adm')->name('adm');
 

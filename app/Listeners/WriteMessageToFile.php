@@ -28,6 +28,7 @@ class WriteMessageToFile
     public function handle(UserLoggedIn $event)
     {
         $message = $event->user->name . ' just logged in to the application.'. now();
-        Storage::prepend('loginactivity.txt', $message);
+        Storage::disk('public')->prepend('loginactivity.txt', $message);
+//        Storage::prepend('loginactivity.txt', $message);
     }
 }

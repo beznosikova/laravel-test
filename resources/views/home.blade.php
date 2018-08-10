@@ -16,6 +16,10 @@
 
                     You are logged in!
                 </div>
+                <div>
+                    <img src="{{ asset('storage/photos/Z9wHwEiCM6vEeXu1w3m2wcWJkza84HlDtbKFoKfk.png') }}" alt="">
+                    {{ asset('storage/loginactivity.txt') }}
+                </div>
             </div>
         </div>
     </div>
