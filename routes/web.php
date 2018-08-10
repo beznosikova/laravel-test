@@ -26,6 +26,7 @@ Route::get('/', 'PageController@index');
 Route::get('/test/{post}', 'PageController@test');
 Route::get('/test', 'TestController@index');
 Route::get('/files', 'TestController@files');
+Route::get('/locale', 'TestController@locale');
 
 //Route::get('/adm', 'PageController@adm')->name('adm');
 

@@ -6,6 +6,7 @@ use App\Events\UserLoggedIn;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Library\Exceptions\CustomException;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
@@ -31,5 +32,10 @@ class TestController extends Controller
 //        $url = Storage::disk('public')->putFile('photos', new File('storage/new.png'));;
         $contents = Storage::disk('public')->get('loginactivity.txt');
         return $url;
+    }
+
+    public function locale()
+    {
+        return Lang::choice('custom.apples', 22);
     }
 }
