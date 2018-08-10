@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Library\Services\Localization;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('locale', function () {
+            return new Localization();
+        });
     }
 }
