@@ -13,7 +13,7 @@ class Localization
     public function __construct()
     {
         $uri = Request::path();
-        $this->uriSegments = collect(explode('/',$uri));
+        $this->uriSegments = collect(explode('/', trim($uri, '/')));
 
         $this->locale = $this->getLocaleFromUrl();
     }
@@ -30,14 +30,19 @@ class Localization
 
     public function getDefaultUrl()
     {
-        $newUriSegments = $this->uriSegments->except('0');
+        $newUriSegments = ($this->locale) ? $this->uriSegments->except('0') : $this->uriSegments;
         return implode('/', $newUriSegments->toArray());
+    }
+
+    public function getFullUrl(string $prefix)
+    {
+        $defaultUrl = $this->getDefaultUrl();
+        return ($defaultUrl !== "") ? "{$prefix}/{$defaultUrl}" : $prefix;
     }
 
     private function getLocaleFromUrl()
     {
         $firstSegmentsURI = $this->uriSegments->first();
-
         return  (!empty($firstSegmentsURI) && in_array($firstSegmentsURI, Config::get('app.languages'))) ? $firstSegmentsURI : "";
     }
 }

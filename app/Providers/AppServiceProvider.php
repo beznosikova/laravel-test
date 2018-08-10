@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('test*', function ($view){
             $view->with('age', random_int(20,29));
         });
+
     }
 
     /**

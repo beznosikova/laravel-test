@@ -27,6 +27,11 @@ class LocaleMiddleware
             App::setLocale($locale);
         }
 
+        \Menu::make('switchSite', function ($menu) use ($localization) {
+            $menu->add('English', ['url' => $localization->getDefaultUrl()] );
+            $menu->add('Ukraine', $localization->getFullUrl('uk'));
+        });
+
         return $next($request);
     }
 

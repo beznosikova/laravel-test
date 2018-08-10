@@ -74,6 +74,7 @@
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
                     @endauth
+                    @include('face.switch', ['items'=>$switchSite])
                 </div>
             @endif
 
