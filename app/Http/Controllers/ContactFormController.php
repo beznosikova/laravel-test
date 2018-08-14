@@ -53,9 +53,7 @@ class ContactFormController extends Controller
         $contact = ContactForm::create($request->all());
 
         if ($contact){
-            Mail::to('beznosikovat@gmail.com')
-                ->send(new FormFilled($contact))
-                ;
+            Mail::to('vasha@gmail.com', 'Vasha')->send(new FormFilled($contact));
             return redirect()->route('face');
         } else {
             throw new CustomException('Store error');
@@ -68,9 +66,9 @@ class ContactFormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ContactForm $contact)
     {
-        //
+        dump($contact);
     }
 
     /**

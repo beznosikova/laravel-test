@@ -1,6 +1,10 @@
-@extends('emails.contactForm.contactAdmin')
-
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Letter from laravel.test</title>
+</head>
+<body>
 	<h1>Hello, Admin!</h1>
 	<p>You have new message!</p>
 	<br>
@@ -11,6 +15,5 @@
 	@endif
 	<b>Message:</b>
 	<p>{{ $contact->message }}</p>
-@endsection	
-
-
+</body>
+</html>

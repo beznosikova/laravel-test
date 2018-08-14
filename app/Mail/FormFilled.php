@@ -33,6 +33,6 @@ class FormFilled extends Mailable
     {
         return $this
             ->subject('New message from site')
-            ->view('emails.contactForm.contactAdmin');
+            ->view('emails.contact.admin');
     }
 }

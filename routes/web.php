@@ -24,7 +24,7 @@ Route::group(['prefix' => app()->get('locale')->getLocale()], function() {
     });
 
 
-    Route::group(['middleware' => 'face_front'], function () {
+    // Route::group(['middleware' => 'face_front'], function () {
         Route::get('/', 'PageController@index')->name('face');
         Route::get('/test/{post}', 'PageController@test');
         Route::get('/test', 'TestController@index');
@@ -36,10 +36,11 @@ Route::group(['prefix' => app()->get('locale')->getLocale()], function() {
         // Route::resource('contacts', 'ContactFormController');
         Route::get('/contacts/create', 'ContactFormController@create');
         Route::post('/contacts/store', 'ContactFormController@store');
+        Route::get('/contacts/show/{id}', 'ContactFormController@show');
 
         Route::get('/{category}', 'PageController@category')
             ->name('category')
             ->where('category', '[a-z0-9]+');
         Route::get('/{category}/{post}', 'PageController@post')->name('post');
-    });
+    // });
 });
