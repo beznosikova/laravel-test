@@ -164,6 +164,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\RiakServiceProvider::class,
         Lavary\Menu\ServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
 
     ],
 
@@ -213,7 +215,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Menu'      => Lavary\Menu\Facade::class,
+        'Menu' => Lavary\Menu\Facade::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
     ],
 
 ];

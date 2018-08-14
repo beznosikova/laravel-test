@@ -15,6 +15,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         // php artisan event:generate
         'App\Events\UserLoggedIn' => ['App\Listeners\WriteMessageToFile'],
+        // 'Illuminate\Mail\Events\MessageSending' => ['App\Listeners\LogSentMessage'],
     ];
 
     /**

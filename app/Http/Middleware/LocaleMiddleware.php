@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Menu;
 use Illuminate\Support\Facades\App;
 
 class LocaleMiddleware
@@ -27,7 +28,7 @@ class LocaleMiddleware
             App::setLocale($locale);
         }
 
-        \Menu::make('switchSite', function ($menu) use ($localization) {
+        Menu::make('switchSite', function ($menu) use ($localization) {
             $menu->add('English', ['url' => $localization->getDefaultUrl()] );
             $menu->add('Ukraine', $localization->getFullUrl('uk'));
         });

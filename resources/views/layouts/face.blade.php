@@ -9,7 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <!-- Styles -->
         <style>
             html, body {
@@ -20,6 +20,7 @@
                 height: 100vh;
                 margin: 0;
             }
+            ul, li { list-style: none;}
 
             .full-height {
                 height: 100vh;
@@ -29,6 +30,7 @@
                 align-items: center;
                 display: flex;
                 justify-content: center;
+                flex-direction: column;
             }
 
             .position-ref {
@@ -49,7 +51,7 @@
                 font-size: 84px;
             }
 
-            .links > a {
+            .links a {
                 color: #636b6f;
                 padding: 0 25px;
                 font-size: 12px;
@@ -57,6 +59,12 @@
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+            }
+
+            .bottom {
+                position: absolute;
+                left: -50px;
+                bottom: 20px;
             }
 
             .m-b-md {
@@ -81,10 +89,14 @@
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
+                    <small>{{ trans('custom.big') }}</small>
                 </div>
                 @yield('content')
             </div>
-            <div>{{ trans('custom.big') }}</div>
+            <div class="bottom links">
+                {!! $bottomMenu->asUl() !!}
+            </div>
         </div>
+        @yield('scripts')
     </body>
 </html>
